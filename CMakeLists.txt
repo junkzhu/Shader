@@ -14,12 +14,24 @@ file(GLOB_RECURSE SOURCES
     src/*.h
 )
 
+set(IMGUI_SOURCES
+    ${CMAKE_SOURCE_DIR}/include/imgui/imgui.cpp
+    ${CMAKE_SOURCE_DIR}/include/imgui/imgui_draw.cpp
+    ${CMAKE_SOURCE_DIR}/include/imgui/imgui_widgets.cpp
+    ${CMAKE_SOURCE_DIR}/include/imgui/imgui_tables.cpp
+    ${CMAKE_SOURCE_DIR}/include/imgui/imgui_demo.cpp
+    ${CMAKE_SOURCE_DIR}/include/imgui/backends/imgui_impl_glfw.cpp
+    ${CMAKE_SOURCE_DIR}/include/imgui/backends/imgui_impl_opengl3.cpp
+)
+
 # Create executable
-add_executable(ZShader ${SOURCES})
+add_executable(ZShader ${SOURCES} ${IMGUI_SOURCES})
 
 # Include directories
 target_include_directories(ZShader PUBLIC
     ${CMAKE_SOURCE_DIR}/include
+    ${CMAKE_SOURCE_DIR}/include/imgui
+    ${CMAKE_SOURCE_DIR}/include/imgui/backends
 )
 
 # Link libraries
