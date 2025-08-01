@@ -12,6 +12,7 @@ file(GLOB_RECURSE SOURCES
     src/*.c
     src/*.hpp
     src/*.h
+    src/shader/*.glsl
 )
 
 set(IMGUI_SOURCES
