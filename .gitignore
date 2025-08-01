@@ -9,7 +9,6 @@
 *.opensdf
 *.sdf
 *.ilk
-*.obj
 *.idb
 *.tlog
 *.log

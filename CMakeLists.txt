@@ -26,10 +26,10 @@ set(IMGUI_SOURCES
 )
 
 # Create executable
-add_executable(ZShader ${SOURCES} ${IMGUI_SOURCES})
+add_executable(Shader ${SOURCES} ${IMGUI_SOURCES})
 
 # Include directories
-target_include_directories(ZShader PUBLIC
+target_include_directories(Shader PUBLIC
     ${CMAKE_SOURCE_DIR}/include
     ${CMAKE_SOURCE_DIR}/include/imgui
     ${CMAKE_SOURCE_DIR}/include/imgui/backends
@@ -37,8 +37,8 @@ target_include_directories(ZShader PUBLIC
 
 # Link libraries
 file(GLOB LIBRARIES "${CMAKE_SOURCE_DIR}/lib/*.lib")
-target_link_directories(ZShader PRIVATE ${CMAKE_SOURCE_DIR}/lib)
-target_link_libraries(ZShader PRIVATE ${LIBRARIES})
+target_link_directories(Shader PRIVATE ${CMAKE_SOURCE_DIR}/lib)
+target_link_libraries(Shader PRIVATE ${LIBRARIES})
 
 # Define directories for resources
 set(SHADER_DIR ${CMAKE_SOURCE_DIR}/shaders)
@@ -46,26 +46,26 @@ set(ASSETS_DIR ${CMAKE_SOURCE_DIR}/assets)
 set(DLL_DIR ${CMAKE_SOURCE_DIR}/dlls)
 
 # Post-build commands to copy resources
-add_custom_command(TARGET ZShader POST_BUILD
+add_custom_command(TARGET Shader POST_BUILD
     COMMENT "Copying runtime files..."
     COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${DLL_DIR} $<TARGET_FILE_DIR:ZShader>
+        ${DLL_DIR} $<TARGET_FILE_DIR:Shader>
     COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${SHADER_DIR} $<TARGET_FILE_DIR:ZShader>/shaders
+        ${SHADER_DIR} $<TARGET_FILE_DIR:Shader>/shaders
     COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${ASSETS_DIR} $<TARGET_FILE_DIR:ZShader>/assets
+        ${ASSETS_DIR} $<TARGET_FILE_DIR:Shader>/assets
 )
 
 # Define source directory macro
-target_compile_definitions(ZShader PRIVATE
+target_compile_definitions(Shader PRIVATE
     -DSOURCE_DIR="${CMAKE_SOURCE_DIR}"
 )
 
 # Configure compile options based on build type
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    target_compile_options(ZShader PRIVATE -g -O0)
+    target_compile_options(Shader PRIVATE -g -O0)
 else()
-    target_compile_options(ZShader PRIVATE -O3)
+    target_compile_options(Shader PRIVATE -O3)
 endif()
 
 # Organize files into groups
