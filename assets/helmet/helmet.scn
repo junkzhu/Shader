@@ -1,0 +1,59 @@
+type: pbrm
+
+lighting:
+    environment: workshop
+
+
+materials 2:
+    material 0:
+        basecolor_factor: 1 1 1 1
+        metalness_factor: 1
+        roughness_factor: 1
+        basecolor_map: helmet/helmet_basecolor.tga
+        metalness_map: helmet/helmet_metalness.tga
+        roughness_map: helmet/helmet_roughness.tga
+        normal_map: helmet/helmet_normal.tga
+        occlusion_map: helmet/helmet_occlusion.tga
+        emission_map: helmet/helmet_emission.tga
+        double_sided: off
+        enable_blend: off
+        alpha_cutoff: 0
+    material 1:
+        basecolor_factor: 1 1 1 1
+        metalness_factor: 1
+        roughness_factor: 0.3
+        basecolor_map: null
+        metalness_map: null
+        roughness_map: null
+        normal_map: null
+        occlusion_map: null
+        emission_map: null
+        double_sided: off
+        enable_blend: off
+        alpha_cutoff: 0
+
+transforms 2:
+    transform 0:
+        1  0  0  0
+        0  1  0  0
+        0  0  1  0
+        0  0  0  1
+    transform 1:
+        1  0  0  -6
+        0  1  0  -2
+        0  0  1  0
+        0  0  0  1
+
+models 2:
+    model 0:
+        mesh: helmet/helmet.obj
+        skeleton: null
+        attached: -1
+        material: 0
+        transform: 0
+    model 1:
+        mesh: helmet/ground.obj
+        skeleton: null
+        attached: -1
+        material: 1
+        transform: 1

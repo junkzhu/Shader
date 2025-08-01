@@ -68,5 +68,4 @@ else()
 endif()
 
 # Organize files into groups
-source_group("Header Files" FILES ${SOURCES})
-source_group("Source Files" FILES ${SOURCES})
+source_group(TREE ${CMAKE_SOURCE_DIR} FILES ${SOURCES} ${IMGUI_SOURCES})
